@@ -10,7 +10,7 @@ setuptools.setup(
     name="asyncpgw",  
     version="0.0.1",  
     author="furimu",  
-    description="asyncpg wrapper",  
+    description="これはdiscord.pyとasyncpgを使用し、POSTTGRESQLにデータを保存する処理があるBOTを作ってる日本人向けに作成したものです。",  
     long_description=long_description,  
     long_description_content_type="text/markdown",
     install_requires=requirements,
