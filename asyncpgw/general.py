@@ -27,9 +27,14 @@ class Pg:
         self.pool = bot.pool
         self.table = table
 
+    
+
 
     async def fetch(self, **opt):
         "テーブルの最初のデータを取得する"
+
+        if opt is None:
+            content = await self.pool.fetchrow(f"SELECT * FROM {self.table}")
 
         enums = enumerate(opt.keys(), 1)
         content = await self.pool.fetchrow(f"SELECT * FROM {self.table} WHERE {' AND '.join(f'{c} = ${i}' for i, c in enums)}", *opt.values())
