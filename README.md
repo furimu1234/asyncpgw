@@ -9,24 +9,12 @@
 python3 -m pip install asyncpg
 ```
 
-### psqlに接続
+### 基本的な使い方
 
-```py
-from asyncpgw import start
-from asyncio import get_event_loop
+ソースコードがかなり長くなってしまうので、
+[testsフォルダー](https://github.com/furimu1234/asyncpgw/tree/main/tests)
+にまとめてあります。
 
-async def postgresql_connect():
-    pool = await start.connect('postgres://user_name:password@/db_name')
+尚、このコードは`COG`を使用しています。
 
-def main():
-    loop = get_event_loop()
-    loop.run_until_complete(postgresql_connect())
-
-main()
-```
-
-###  データ取得
-```py
-from asyncpgw import general
-
-psql = genetal.Pg()
+テキストチャットで発言するとユーザーのレベルがあがるコードを例にしてます。
