@@ -32,8 +32,8 @@ class Pg:
         await self.pool.execute(f"ALTER TABLE {self.table} ADD COLUMN {column_name} {data_type}")
 
 
-    async def remove_column(self, column_name, data_type):
-        await self.pool.execute(f"ALTER TABLE {self.table} DROP COLUMN {column_name} {data_type}")
+    async def remove_column(self, column_name):
+        await self.pool.execute(f"ALTER TABLE {self.table} DROP COLUMN {column_name}")
 
 
     async def ncfetchs(self):

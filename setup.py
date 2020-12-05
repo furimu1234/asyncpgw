@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(  
     name="asyncpgw",  
-    version="0.2.6",  
+    version="0.2.7",  
     author="furimu",  
     description="これはdiscordpyとasyncpgを使用し、POSTTGRESQLにデータを保存する処理があるBOTを作ってる日本人向けに作成したものです",  
     long_description=long_description,  
