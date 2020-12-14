@@ -29,19 +29,23 @@ class Pg:
 
     
     async def add_column(self, column_name, data_type):
+        "対象テーブルにカラムを追加する"
         await self.pool.execute(f"ALTER TABLE {self.table} ADD COLUMN {column_name} {data_type}")
 
 
     async def remove_column(self, column_name):
+        "対象テーブルのカラムを削除する"
         await self.pool.execute(f"ALTER TABLE {self.table} DROP COLUMN {column_name}")
 
 
     async def ncfetchs(self):
+        "対象テーブルの全てのデータを取得する"
         content = await self.pool.fetch(f"SELECT * FROM {self.table}")
  
         return content
 
     async def ncfetch(self):
+        "対象テーブルの１つ目のデータを取得する"
         content = await self.pool.fetchrow(f"SELECT * FROM {self.table}")
  
         return content
@@ -122,11 +126,13 @@ class Pg:
         await self.pool.execute(f"DELETE FROM {self.table} WHERE {' AND '.join(f'{c} = ${i}' for i, c in enums)}", *opt.values())
 
     async def ncdelete(self):
+        "対象テーブルの全てのデータを取得する"
         await self.pool.execute(f"DELETE FROM {self.table}")
 
 
 
     async def add(self, **opt):
+        "対象テーブルの引数１つ目のカラム(List)に要素を追加する"
         one_column = f"{list(opt.keys())[0]} = array_append({list(opt.keys())[0]}, $1)"
         enums = enumerate(opt.keys(), 1)
         columns = ' AND '.join(f'{c} = ${i}' for i, c in enums if i != 1) 
@@ -138,6 +144,7 @@ class Pg:
 
     
     async def remove(self, **opt):
+        "対象テーブルの１つ目の引数カラム(List)から要素を削除する"
         one_column = f"{list(opt.keys())[0]} = array_remove({list(opt.keys())[0]}, $1)"
         enums = enumerate(opt.keys(), 1)
         columns = ' AND '.join(f'{c} = ${i}' for i, c in enums if i != 1)
