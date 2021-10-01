@@ -2,12 +2,12 @@
 # -*- coding: utf-8 -*-
 import setuptools  
 
-with open("README.md", "r") as fh:  
+with open("README.md", "r", encoding="utf-8") as fh:  
     long_description = fh.read()  
 
 setuptools.setup(  
     name="asyncpgw",  
-    version="0.2.7",  
+    version="0.3.5",  
     author="furimu",  
     description="これはdiscordpyとasyncpgを使用し、POSTTGRESQLにデータを保存する処理があるBOTを作ってる日本人向けに作成したものです",  
     long_description=long_description,  

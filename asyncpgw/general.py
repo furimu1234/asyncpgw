@@ -22,9 +22,11 @@ class Pg:
     table - 対象のテーブル名
     普通はこのクラスを使う
     """
-    def __init__(self, bot, table: str):
-        self.bot = bot
-        self.pool = bot.pool
+    def __init__(self, bot=None,table: str=None):
+        if bot is not None:
+            self.bot = bot
+            self.pool = bot.pool
+
         self.table = table
 
     
